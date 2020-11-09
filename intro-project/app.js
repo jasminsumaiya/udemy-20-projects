@@ -8,28 +8,29 @@ function init() {
 function onFormSubmit(e) {
     e.preventDefault();
 
-    let domIdList = ['userName', 'email', 'password', 'ConformPassword'];
-    checkRequired(domIdList);
-
-    let email = document.getElementById('email');
-    validateEmail(email);  
-
+    let domIdList = ['username', 'email', 'password', 'ConformPassword'];
+    let checkRequiredvalue = checkRequired(domIdList);
+    if(checkRequiredvalue === true){
+        let email = document.getElementById('email');
+        validateEmail(email);  
+    }  
     let password = document.getElementById('password');
     let ConformPassword = document.getElementById('ConformPassword');
     checkPasswordMatch(password, ConformPassword);
 }
 
 function checkRequired(domIdList){
+    let hasValidRequiredElements = true;
     domIdList.forEach((domId) => {
         let domElement = document.getElementById(domId);
-
         if (domElement.value.trim() === "") {
+            hasValidRequiredElements = false;
             showError(domElement, `${getDomElementName(domElement)} is required`);
         } else {
-            //showSuccess(domElement);
             checkLength(domElement);
         }
     });
+    return hasValidRequiredElements;
 }
 
 function getDomElementName(inputDom){
