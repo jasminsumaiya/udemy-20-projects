@@ -3,6 +3,12 @@ window.addEventListener('load', init);
 function init() {
     const form = document.getElementById("form");
     form.addEventListener('submit', onFormSubmit);
+
+    let eyeIconList = document.querySelectorAll('.togglePassword');
+    let passwordDomList = Array.from(eyeIconList);
+    passwordDomList.forEach((dom) => {
+        dom.addEventListener('click', onClickIcon);
+    });
 }
 
 function onFormSubmit(e) {
@@ -10,16 +16,26 @@ function onFormSubmit(e) {
 
     let domIdList = ['username', 'email', 'password', 'ConformPassword'];
     let checkRequiredvalue = checkRequired(domIdList);
-    if(checkRequiredvalue === true){
+    if (checkRequiredvalue === true) {
         let email = document.getElementById('email');
-        validateEmail(email);  
-    }  
+        validateEmail(email);
+    }
     let password = document.getElementById('password');
     let ConformPassword = document.getElementById('ConformPassword');
     checkPasswordMatch(password, ConformPassword);
+
+    validatePassword(password);
 }
 
-function checkRequired(domIdList){
+function onClickIcon(e) {
+    e.preventDefault();
+    let icon = e.currentTarget;
+    let parentElement = icon.parentElement;
+    var inputPassword = parentElement.querySelector('input');
+    visiblePassword(icon, inputPassword);
+}
+
+function checkRequired(domIdList) {
     let hasValidRequiredElements = true;
     domIdList.forEach((domId) => {
         let domElement = document.getElementById(domId);
@@ -33,7 +49,7 @@ function checkRequired(domIdList){
     return hasValidRequiredElements;
 }
 
-function getDomElementName(inputDom){
+function getDomElementName(inputDom) {
     return inputDom.id.charAt(0).toUpperCase() + inputDom.id.slice(1);
 }
 
@@ -49,31 +65,53 @@ function showSuccess(input) {
     formCtrl.className = "form-control success";
 }
 
-function checkLength(domElement){
-    
-        let min = domElement.getAttribute('min'); 
-        let max = domElement.getAttribute('max');
+function checkLength(domElement) {
 
-        if(domElement.value.length < min){
-            showError(domElement, `${getDomElementName(domElement)} must be at least ${min}`);
-        }else if(domElement.value.length > max) {
-            showError(domElement, `${getDomElementName(domElement)} must be less than ${max}`);
-        }else{
-            showSuccess(domElement);
-        }
+    let min = domElement.getAttribute('min');
+    let max = domElement.getAttribute('max');
+
+    if (domElement.value.length < min) {
+        showError(domElement, `${getDomElementName(domElement)} must be at least ${min}`);
+    } else if (domElement.value.length > max) {
+        showError(domElement, `${getDomElementName(domElement)} must be less than ${max}`);
+    } else {
+        showSuccess(domElement);
+    }
 }
 
 function validateEmail(inputDom) {
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    let email = document.getElementById('email');
     if (reg.test(inputDom.value.trim())) {
         showSuccess(email);
-    }else{
+    } else {
         showError(email, "Email is not valid");
     }
 }
 
-function checkPasswordMatch(password1, password2){
-    if(password1.value !== password2.value){
+function validatePassword(password) {
+    var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if (regex.test(password.value.trim())) {
+        showSuccess(password);
+    } else {
+        showError(password, "Password must be in under condition");
+    }
+}
+
+function checkPasswordMatch(password1, password2) {
+    if (password1.value !== password2.value) {
         showError(password2, 'Password do not match');
+    }
+}
+
+function visiblePassword(icon, inputPassword) {
+    if (inputPassword.getAttribute('type') === 'password') {
+        inputPassword.setAttribute('type', 'text');
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        inputPassword.setAttribute('type', 'password');
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
     }
 }

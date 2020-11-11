@@ -93,3 +93,12 @@ h2 {
         margin-top:10px;
         width: 100%;
 }
+
+.togglePassword {
+        float: right;
+        margin-top: -40px;
+        position: relative;
+        margin-left: -25px;
+        margin-right: 10px;
+        cursor: pointer;
+}

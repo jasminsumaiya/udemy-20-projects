@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <title>simple form</title>
     <script src="app.js"></script>
 </head>
@@ -17,7 +18,7 @@
             <h2>Register With Us</h2>
             <div class="form-control">
                 <label for="username">Username</label>
-                <input type="text" id="username" min="3" max="8" placeholder="Enter User Name">
+                <input type="text" id="username" min="3" max="15" placeholder="Enter User Name">
                 <small>Error message</small>
             </div>
 
@@ -29,13 +30,15 @@
 
             <div class="form-control">
                 <label for="password">Password</label>
-                <input type="password" id="password" min="3" max="8" placeholder="Enter Password">
+                <input type="password" id="password" min="3" max="15" placeholder="Enter Password">
+                <i class="far fa-eye togglePassword"></i>
                 <small>Error message</small>
             </div>
 
             <div class="form-control">
                 <label for="ConformPassword">Conform Password</label>
-                <input type="password" id="ConformPassword" min="3" max="8" placeholder="Enter Password again">
+                <input type="password" id="ConformPassword" min="3" max="15" placeholder="Enter Password again">
+                <i class="far fa-eye togglePassword"></i>
                 <small>Error message</small>
             </div>
             <button type="submit">Submit</button>
