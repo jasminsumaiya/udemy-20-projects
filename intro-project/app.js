@@ -16,14 +16,14 @@ function onFormSubmit(e) {
 
     let domIdList = ['username', 'email', 'password', 'ConformPassword'];
     let checkRequiredvalue = checkRequired(domIdList);
-    if (checkRequiredvalue === true) {
-        let email = document.getElementById('email');
-        validateEmail(email);
-    }
+    //console.log(checkRequiredvalue);
+
+    let email = document.getElementById('email');
+    validateEmail(email);
+
     let password = document.getElementById('password');
     let ConformPassword = document.getElementById('ConformPassword');
     checkPasswordMatch(password, ConformPassword);
-
     validatePassword(password);
 }
 
@@ -81,11 +81,10 @@ function checkLength(domElement) {
 
 function validateEmail(inputDom) {
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    let email = document.getElementById('email');
     if (reg.test(inputDom.value.trim())) {
-        showSuccess(email);
+        showSuccess(inputDom);
     } else {
-        showError(email, "Email is not valid");
+        showError(inputDom, "Email is not valid");
     }
 }
 
