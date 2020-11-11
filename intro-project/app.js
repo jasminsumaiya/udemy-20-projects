@@ -94,7 +94,7 @@ function validatePassword(password) {
     if (regex.test(password.value.trim())) {
         showSuccess(password);
     } else {
-        showError(password, "Password must be in under condition");
+        showError(password, "Password must be at least a symbol, upper and lower case letters and a number");
     }
 }
 
