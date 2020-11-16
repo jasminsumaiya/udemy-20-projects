@@ -1,8 +1,8 @@
 window.addEventListener('load', init);
 let ticketPrice;
 
-function init(){
-  const container = document.querySelector('.container'); 
+function init() {
+  const container = document.querySelector('.container');
   const movieSelect = document.getElementById('movie');
 
   container.addEventListener('click', onSeatClick);
@@ -12,14 +12,14 @@ function init(){
   updateSelectedCount();
 }
 
-function onSeatClick(e){
-    if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
-        e.target.classList.toggle('selected');
-        updateSelectedCount();
-      }
+function onSeatClick(e) {
+  if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
+    e.target.classList.toggle('selected');
+    updateSelectedCount();
+  }
 }
 
-function onChangeMovie(e){
+function onChangeMovie(e) {
   clearAllSeatSelection();
   ticketPrice = +e.target.value;
   console.log(e.target.selectedIndex);
@@ -38,7 +38,7 @@ function updateSelectedCount() {
   const seatsIndex = [...selectedSeats].map((seat) => {
     return [...seats].indexOf(seat);
   });
-  
+
   localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
 
   const selectedSeatsCount = selectedSeats.length;
@@ -65,7 +65,7 @@ function populateUI() {
   }
 }
 
-function clearAllSeatSelection(){
+function clearAllSeatSelection() {
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
   [...selectedSeats].forEach((item) => {
     item.classList.remove('selected');
