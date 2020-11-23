@@ -10,6 +10,8 @@
     amountOne.addEventListener("input", calculate);
     amountTwo.addEventListener("input", calculate);
     swap.addEventListener("click", onClickSwap);
+
+    calculate();
  });
 
 function calculate(){
