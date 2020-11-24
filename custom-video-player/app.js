@@ -43,7 +43,7 @@ function updatePlayIcon() {
   }
 }
 
-function updateProgress(){
+function updateProgress() {
   const progress = document.getElementById('progress');
   const video = document.getElementById('video');
   const timestamp = document.getElementById('timestamp');
@@ -63,33 +63,43 @@ function updateProgress(){
   timestamp.innerHTML = `${mins}:${secs}`;
 }
 
-function stopVideo(){
+function stopVideo() {
   const stop = document.getElementById('stop');
   video.currentTime = 0;
   video.pause();
 }
 
-function setVideoProgress(){
+function setVideoProgress() {
   const progress = document.getElementById('progress');
   const video = document.getElementById('video');
   video.currentTime = (+progress.value * video.duration) / 100;
 }
 
-function toggleMute(){
+function toggleMute() {
   const video = document.getElementById('video');
   const muteBtn = document.getElementById("volumeIcone");
-    if(video.muted === false){
-      video.muted = true;
-      muteBtn.classList.remove("fa-volume-up");
-      muteBtn.classList.add("fa-volume-off");
-    } else {
-      video.muted = false;
-      muteBtn.classList.remove("fa-volume-off");
-      muteBtn.classList.add("fa-volume-up");
-    }
+  if (video.muted === false) {
+    video.muted = true;
+    muteBtn.classList.remove("fa-volume-up");
+    muteBtn.classList.add("fa-volume-off");
+  } else {
+    video.muted = false;
+    muteBtn.classList.remove("fa-volume-off");
+    muteBtn.classList.add("fa-volume-up");
+  }
 }
 
-function setVolumeProgress(e){
+function setVolumeProgress(e) {
   const video = document.getElementById('video');
+  const muteBtn = document.getElementById("volumeIcone");
   video.volume = e.target.value;
+  if (video.volume == 0) {
+    video.muted = true;
+    muteBtn.classList.remove("fa-volume-up");
+    muteBtn.classList.add("fa-volume-off");
+  } else {
+    video.muted = false;
+    muteBtn.classList.remove("fa-volume-off");
+    muteBtn.classList.add("fa-volume-up");
+  }
 }
