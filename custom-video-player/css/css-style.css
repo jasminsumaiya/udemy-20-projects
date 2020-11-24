@@ -67,6 +67,19 @@ h1 {
   outline: 0;
 }
 
+#volumeBar{
+  width: 70px;
+  margin: 0;
+  padding: 0;
+}
+
+.fa.fa-volume-up, .fa.fa-volume-off{
+  margin-left: 10px;
+  margin-right: 1px;
+  cursor: pointer;
+  width: 50px;
+}
+
 @media (max-width: 800px) {
   .screen,
   .controls {
