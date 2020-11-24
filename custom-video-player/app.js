@@ -35,11 +35,11 @@ function toggleVideoStatus() {
 
 function updatePlayIcon() {
   const play = document.getElementById('play');
-
+  const video = document.getElementById('video');
   if (video.paused) {
-    play.innerHTML = `<i class="fa fa-pause"></i>`;
-  } else {
     play.innerHTML = `<i class="fa fa-play fa-2x"></i>`;
+  } else {
+    play.innerHTML = `<i class="fa fa-pause"></i>`;
   }
 }
 
@@ -53,7 +53,6 @@ function updateProgress(){
   let mins = Math.floor(video.currentTime / 60);
   if (mins < 10) {
     mins = '0' + String(mins);
-    console.log(mins);
   }
 
   let secs = Math.floor(video.currentTime % 60);
