@@ -239,18 +239,17 @@ function searchMeal(e) {
     if (term.trim()) {
         let searchTerm = term.trim().toLowerCase();
 
-        console.log(mealList);
         resultHeading.innerHTML = `<h2>Search results for '${term}':</h2>`;
 
-        if (meals === null) {
+        let filteredMeals = mealList.filter((meal) => {
+            let strInstructions = meal.strInstructions.toLowerCase();
+            return strInstructions.includes(searchTerm);
+        });
+
+        if (filteredMeals.length === 0) {
             resultHeading.innerHTML = `<p>There are no search results. Try again!<p>`;
             mealsEl.innerHTML = '';
         } else {
-            let filteredMeals = mealList.filter((meal) => {
-                let strInstructions = meal.strInstructions.toLowerCase();
-                return strInstructions.includes(searchTerm);              
-            });
-
             mealsEl.innerHTML = filteredMeals.map(meal => `
                 <div class="meal">
                     <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
@@ -259,10 +258,10 @@ function searchMeal(e) {
                     </div>
                 </div> `).join('');
         }
-
-        term = '';
+        search.value = '';
     } else {
-        alert('Please enter a search term');
+        resultHeading.innerHTML = `<p>Please enter a search term!<p>`;
+        mealsEl.innerHTML = '';
     }
 }
 
@@ -273,11 +272,12 @@ function getRandomMeal() {
     const single_mealEl = document.getElementById('single-meal');
     single_mealEl.innerHTML = '';
 
+    mealsEl.innerHTML = '';
+
     let selectedMeal = mealList[Math.floor(Math.random() * mealList.length)];
     console.log(selectedMeal);
 
     resultHeading.innerHTML = `<h2>Search results for random:</h2>`;
-
 
     mealsEl.innerHTML = `<div class="meal">
                             <img src="${selectedMeal.strMealThumb}" alt="${selectedMeal.strMeal}" />
