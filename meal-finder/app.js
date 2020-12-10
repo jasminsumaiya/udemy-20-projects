@@ -178,7 +178,7 @@ function init() {
             "strIngredient4": "Turmeric",
             "strIngredient5": "Ghee",
             "strIngredient6": "Chopped tomatoes",
-            "strIngredient7": "Cumin seeds",
+            "strIngredient7": "Cumin seed",
             "strIngredient8": "Mustard Seeds",
             "strIngredient9": "Bay Leaf",
             "strIngredient10": "Green Chili",
@@ -237,6 +237,7 @@ function searchMeal(e) {
     let term = search.value;
 
     if (term.trim()) {
+        let searchTerm = term.trim().toLowerCase();
 
         console.log(mealList);
         resultHeading.innerHTML = `<h2>Search results for '${term}':</h2>`;
@@ -245,7 +246,12 @@ function searchMeal(e) {
             resultHeading.innerHTML = `<p>There are no search results. Try again!<p>`;
             mealsEl.innerHTML = '';
         } else {
-            mealsEl.innerHTML = mealList.map(meal => `
+            let filteredMeals = mealList.filter((meal) => {
+                let strInstructions = meal.strInstructions.toLowerCase();
+                return strInstructions.includes(searchTerm);              
+            });
+
+            mealsEl.innerHTML = filteredMeals.map(meal => `
                 <div class="meal">
                     <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
                     <div class="meal-info" data-mealID="${meal.idMeal}">
@@ -279,4 +285,5 @@ function getRandomMeal() {
                                 <h3>${selectedMeal.strMeal}</h3>
                             </div>
                         </div> `;
+    search.value = '';
 }
