@@ -1,12 +1,10 @@
 window.addEventListener("load", init);
-let mealList;
+let mealList = [];
 
-function init() {
-    mealList = [];
+function init() { 
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
         .then(res => res.json())
         .then(data => {
-            console.log(data.meals);
             mealList = data.meals;
         });
 
@@ -15,8 +13,6 @@ function init() {
 
     random = document.getElementById('random');
     random.addEventListener('click', getRandomMeal);
-
-    //displaySingleMeal(mealList[0]);
 }
 
 function searchMeal(e) {
@@ -84,9 +80,9 @@ function updateMealEl(meal){
 
 function singleMealEl(event){
     let selectedMealId = event.currentTarget.getAttribute('data-meal-id');
-    console.log(selectedMealId);
+    
     let singleMeal = mealList.find((meal) => meal.idMeal === selectedMealId);
-    console.log(singleMeal);
+    
     displaySingleMeal(singleMeal);
 }
 
