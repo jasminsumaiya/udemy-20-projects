@@ -1,5 +1,19 @@
 window.addEventListener("load", init);
-let titleList = [];
+let todoId = 0;
+let titleList = [{
+    "workTitle": "One",
+    "workID": todoId++,
+    "status": "inActive"
+},{
+    "workTitle": "toDoTitle.value",
+    "workID": todoId++,
+    "status": "active"
+},{
+    "workTitle": "Tewnty",
+    "workID": todoId++,
+    "status": "inActive"
+}];
+
 
 function init() {
     let submit = document.querySelector(".add-btn");
@@ -14,7 +28,7 @@ function addToList() {
         //push the value in to array 
         titleList.push({
             "workTitle": toDoTitle.value,
-            "workID": titleList.length,
+            "workID": todoId++,
             "status": "inActive"
         });
 
@@ -48,12 +62,21 @@ function addListToDom(todoItem) {
     }
     activeIcon += "</span>"
 
+
+    let editIcon = `<span class="column3 edit-icon">`;
+    if (todoItem.status != "active") {
+        editIcon += `<i class="fas fa-edit"></i>`;
+    }
+    editIcon += "</span>"
+    
+
+
     return `<li data-work-id="${todoItem.workID}" data-status1="${todoItem.status}" 
                     onclick="addListToSuccess(event)">
                 ${activeIcon} 
                 <span class="column2">${todoItem.workTitle}</span>
-            <button class="column3 edit-btn">edit</button>
-            <i class="column4 delete-icone fa fa-trash" aria-hidden="true" 
+                ${editIcon}
+            <i class="column4 delete-icon fa fa-trash" aria-hidden="true" 
                                 onclick="deleteList(event)"></i>
             </li>`
 }

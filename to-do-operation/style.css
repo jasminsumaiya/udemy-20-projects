@@ -72,24 +72,18 @@ input {
     position: relative;
 }
 
-.delete-icone {
-    float: right;
+.delete-icon {
     cursor: pointer; 
 }
 
-.edit-btn {
-    margin-left: 1030px;
+.edit-icon {
     cursor: pointer; 
-    background-color: gray;
 }
 
-.tick-mark {
-    margin-left: 0px;
-    margin-right: 10px;
-}
 
 li[data-status1="active"] {
-    background: gray;
+    background-color: gray!important;
+    text-decoration: line-through;
 }
 
 .column1 {
@@ -98,10 +92,12 @@ li[data-status1="active"] {
   }
 
 .column2 {
+    display: inline-block;
     width: 70%;
   }
 
   .column3 {
+    display: inline-block;
     width: 5%;
   }
 
