@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --added-list: rgb(105, 105, 103);
+    --non-added-list: rgb(234, 236, 233);
+}
+
+body {
+    color: #000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: auto;
+}
+
+.container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: auto;
+}
+
+.flex {
+    background-color: red;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+input {
+    border: 1px solid #dedede;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 20px;
+    width: 500px;
+}
+
+.input-btn button {
+    border: 1px solid #dedede;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 14px;
+    padding: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.flex h1 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
+    font-size: 30px;
+    color: #fff;
+}
+
+.added-list ul {
+    padding-left: 0;
+    list-style-type: none;
+    list-style: none;
+}
+  
+.added-list ul li {    
+    background-color: var(--non-added-list);  
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px;
+    position: relative;
+}
+
+.delete-icone {
+    float: right;
+    cursor: pointer; 
+}
+
+.edit-btn {
+    margin-left: 1030px;
+    cursor: pointer; 
+    background-color: gray;
+}
+
+.tick-mark {
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+li[data-status1="active"] {
+    background: gray;
+}
+
+.column1 {
+    display: inline-block;
+  width: 5%;
+  }
+
+.column2 {
+    width: 70%;
+  }
+
+  .column3 {
+    width: 5%;
+  }
+
+  .column4 {
+    float: right;
+    width: 5%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
