@@ -72,7 +72,7 @@ function addListToDom(todoItem) {
 
 
     return `<li data-work-id="${todoItem.workID}" data-status1="${todoItem.status}" 
-                    onclick="addListToSuccess(event)">
+                    onclick="toggleTodoItem(event)">
                 ${activeIcon} 
                 <span class="column2">${todoItem.workTitle}</span>
                 ${editIcon}
@@ -81,12 +81,15 @@ function addListToDom(todoItem) {
             </li>`
 }
 
-function addListToSuccess(e) {
+function toggleTodoItem(e) {
+    e.preventDefault();
     let successItemID = e.currentTarget.getAttribute('data-work-id');
     let clickedOne = titleList.find((title) => title.workID == successItemID);
-    console.log(clickedOne);
-    clickedOne.status = "active";
-
+    if(clickedOne.status == "active"){
+        clickedOne.status = "inActive"; 
+    } else{
+        clickedOne.status = "active"; 
+    }
     renderToDoList();
 }
 
