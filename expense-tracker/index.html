@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js"></script>
+    <title>Expense Tracker</title>
+</head>
+
+<body>
+    <h2 class="title">Expense Tracker</h2>
+    <div class="container">
+        <h4>YOUR BALANCE</h4>
+        <h1 id="balance">$0.00</h1>
+
+        <div class="income-expence-con">
+            <div>
+                <h4>INCOME</h4>
+                <p class="money plus" id="money-plus">+$0.00</p>
+            </div>
+            <div>
+                <h4>EXPENSE</h4>
+                <p class="money minus" id="money-minus">-$0.00</p>
+            </div>
+        </div>
+
+        <h3>Histry</h3>
+        <ul class="histry" id="histry">
+            <!--
+            <li class="histry-list" data-status="plus">content<span>-$40.00</span><button class="delite-btn">X</button></li>
+            <li class="histry-list" data-status="minus">content<span>-$40.00</span><button class="delite-btn">X</button></li>
+            -->
+        </ul>
+
+        <h3>Add new transaction</h3>
+        <div id="form">
+            <div class="form-control">
+                <label for="transaction">Description</label>
+                <input type="text" id="transaction" name="Description" placeholder="Enter Description...">
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label for="amount">Amount(Income:positive, Expence:negative)</label>
+                <input type="number" id="amount" name="Amount" placeholder="Enter amount...">
+                <small>Error message</small>
+            </div>
+            <button class="submit" onclick="onAddTransactionClick(event)">Add Transaction</button>
+        </div>
+    </div>
+</body>
+</html>

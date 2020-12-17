@@ -3,7 +3,7 @@
 }
 
 :root {
-    --added-list: rgb(105, 105, 103);
+    --added-list: gray;
     --non-added-list: rgb(234, 236, 233);
 }
 
@@ -13,12 +13,12 @@ body {
     margin: auto;
 }
 
-.container {
+.container{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 1150px;
     margin: auto;
-    width: auto;
 }
 
 .flex {
@@ -36,6 +36,7 @@ input {
     padding: 8px;
     margin-bottom: 20px;
     width: 500px;
+    position: relative;
 }
 
 .input-btn button {
@@ -47,6 +48,7 @@ input {
     margin-bottom: 20px;
     cursor: pointer;
     width: 100px;
+    position: absolute;
 }
 
 .flex h1 {
@@ -80,16 +82,13 @@ input {
     cursor: pointer; 
 }
 
-
-
 li[data-status1="active"] {
-    background-color: gray!important;
-    text-decoration: line-through;
+    background-color: var(--added-list)!important;
 }
 
 .column1 {
     display: inline-block;
-  width: 5%;
+    width: 5%;
   }
 
 .column2 {
@@ -106,6 +105,7 @@ li[data-status1="active"] {
     float: right;
     width: 5%;
   }
+
   
 
 
