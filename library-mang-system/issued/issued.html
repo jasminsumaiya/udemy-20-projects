@@ -19,13 +19,57 @@
         <a href="../users/users.html">Users</a>
     </nav>
 
-    <div>
-        <select name="cars" id="cars">
-            <option >Users</option>
-            <option>mani</option>
-            <option>gopi</option>
-            <option>umar</option>
-        </select>
+    <div class="dropdown">
+        <button class="dropbtn">User
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a>Mani</a>
+            <a>Gopi</a>
+            <a>Umar</a>
+        </div>
     </div>
-</body>
 
+    <div class="dropdown">
+        <button class="dropbtn">Books
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a>Javascript</a>
+            <a>JAVA</a>
+            <a>nodeJS</a>
+        </div>
+    </div>
+
+    <div class="input-count">
+        <input type="text" id="count" placeholder="Enter Books Count">
+    </div>
+    
+    <div>
+        <button type="submit">Add User</button>
+    </div>
+
+    <div>
+        <table id="user-list">
+            <tr>
+              <th>ID</th>
+              <th>Username</th> 
+              <th>Book</th>
+            </tr>
+            <!--
+            <tr>
+              <td>1</td>
+              <td>Sumaiya</td>
+              <td><ul><li>JAVA</li><li>Javascript</li></ul></td>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>Sumaiya</td>
+                <td><ul><li>nodejs</li><li>Javascript</li></ul></td>
+              </tr>
+              -->
+          </table>
+    </div>
+
+</body>

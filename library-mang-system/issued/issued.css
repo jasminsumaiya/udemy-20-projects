@@ -21,7 +21,7 @@ Body {
     overflow: hidden;
   }
   
-  .topnav a {
+.topnav a {
     float: left;
     display: flex;
     color: #f2f2f2;
@@ -29,7 +29,7 @@ Body {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-  }
+}
   
 .topnav a:hover {
     background-color: #ddd;
@@ -41,3 +41,130 @@ Body {
     color: white;
 }
 
+/* Drop Down */
+  
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+  
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 10px 24px;
+    background-color: mediumturquoise;
+    font-family: inherit; 
+    margin-top: 20px;
+    margin-left: 20px;
+    position: relative;
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: mediumturquoise;
+}
+
+.dropdown-content {
+    display: none;
+    margin: 0px 50px;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+ 
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* input box */
+
+.input-count input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 14px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 20%;
+}
+
+.input-count small {  
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 175px;
+    /*visibility: hidden;*/
+}
+
+/* Button */
+
+button {
+    cursor: pointer;
+    background-color: mediumturquoise;
+    border: 2px solid mediumturquoise;
+    border-radius: 4px;
+    color: #fff;
+    display: inline;
+    padding: 9px 24px;
+    margin-top: -39px;
+    margin-left: 692px;
+    width: 185px;
+    position: absolute;
+}
+
+button:hover {
+    background-color: rgb(74, 223, 223);
+    color: black;
+}
+
+/* table */
+
+#user-list {
+    width: 72%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+table, th, td {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ffff;
+}
+
+td {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+tr {
+    margin: 20px;
+}
