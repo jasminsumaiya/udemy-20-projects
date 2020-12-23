@@ -59,11 +59,23 @@ function showSuccess(domElement) {
 //----form validation--------
 
 function renderBookList() {
-    let table = document.getElementById("table-body");
-    var row = document.createElement("tr");
-    var cell = document.createElement("td");
+    let tableBody = document.getElementsByTagName("tbody");
+    let bookFields = ['ID', 'ISBN', 'BOOK', 'AUTHOR', 'PUBLISHER', 'QUANTITY'];
 
-    table.innerHTML = bookDetailList.map((bookItem) => {
+    bookDetailList.forEach((bookItem) => {
+        let tr = document.createElement('tr');
+        console.log('sumaiya');
+        bookFields.forEach((field) => {
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode(bookItem[field]));
+            tr.appendChild(td);
+            console.log('jas');
+        });
+        tableBody.appendChild(tr);
+    });
+    return tableBody;
+
+    /*table.innerHTML = bookDetailList.map((bookItem) => {
         return `<tr>          
                 <td>${bookItem.ID}</td>
                 <td>${bookItem.ISBN}</td>
@@ -73,6 +85,6 @@ function renderBookList() {
                 <td>${bookItem.QUANTITY}</td>
                 <td><button><i class="fas fa-edit"></i></button></td>
                 </tr>`
-    }).join(" ");
+    }).join(" ");*/
                         
 }
