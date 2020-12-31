@@ -77,6 +77,15 @@ Body {
     visibility: hidden;
 }
 
+.form-control.error small {
+    color: var(--error-color);
+    visibility: visible;
+}
+
+.form-control.success input {
+    border-color: var(--success-color);
+}
+
 .form button {
     cursor: pointer;
     background-color: mediumturquoise;
