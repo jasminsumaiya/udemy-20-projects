@@ -23,7 +23,7 @@
         <button class="dropbtn">User
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content">
+        <div class="dropdown-content" id="user-list">
             <a>Mani</a>
             <a>Gopi</a>
             <a>Umar</a>
@@ -34,7 +34,7 @@
         <button class="dropbtn">Books
             <i class="fa fa-caret-down"></i>
         </button>
-        <div class="dropdown-content">
+        <div class="dropdown-content" id="book-list">
             <a>Javascript</a>
             <a>JAVA</a>
             <a>nodeJS</a>
@@ -46,7 +46,7 @@
     </div>
     
     <div>
-        <button type="submit">Add User</button>
+        <button type="submit" onclick="onClickAddUser(event)">Add User</button>
     </div>
 
     <div>

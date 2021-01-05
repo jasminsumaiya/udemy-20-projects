@@ -52,11 +52,13 @@ function onClickAddBooks(event) {
         } else {
             let editedItem = bookDetailList.find((bookItem) => bookItem.ID == activeID);
             console.log(editedItem);
+
             editedItem.ISBN = isbn.value;
             editedItem.BOOK = book.value;
             editedItem.AUTHOR = author.value;
             editedItem.PUBLISHER = publisher.value;
             editedItem.QUANTITY = quantity.value;
+
             activeID = -1;
             //change UPDATE btn into ADD btn
             let submit = document.getElementById("submit");
@@ -121,14 +123,16 @@ function editBookList(e) {
 
     let editItemId = e.currentTarget.getAttribute('data-edit-id');
     activeID = editItemId;
+    console.log(editItemId);
 
-    let filteredItem = bookDetailList.filter((bookItem) => bookItem.ID == editItemId);
+    let findItem = bookDetailList.find((bookItem) => bookItem.ID == editItemId);
+    console.log(findItem);
 
-    isbn.value = filteredItem["ISBN"];
-    book.value = filteredItem["BOOK"];
-    author.value = filteredItem["AUTHOR"];
-    publisher.value = filteredItem["PUBLISHER"];
-    quantity.value = filteredItem["QUANTITY"]; 
+    isbn.value = parseInt(findItem["ISBN"]);
+    book.value = findItem["BOOK"];
+    author.value = findItem["AUTHOR"];
+    publisher.value = findItem["PUBLISHER"];
+    quantity.value = parseInt(findItem["QUANTITY"]); 
 
     let submit = document.getElementById("submit");
     submit.textContent = "UPDATE";
