@@ -18,16 +18,13 @@ function onClickAddUser(e) {
     let city = document.getElementById("city");
     let contact = document.getElementById("contact");
 
-    console.log(username.id);
-
     let userDomList = [username, email, address, city, contact];
 
     let hasValid = checkRequired(userDomList);
-    console.log(hasValid);
+    console.log(hasValid); //check hasValid true or false
 
     if(hasValid){
         let userDetailList = getUserDetailList();
-
         if(activeID == -1){
             userDetailList.push(
                 {"ID": nextUserID(),
@@ -50,7 +47,6 @@ function onClickAddUser(e) {
             let submit = document.getElementById("submit");
             submit.textContent = "Add User";
         }  
-
         setUserDetailList(userDetailList);
     }
     userDomList.forEach((domItem) => domItem.value = "");
@@ -138,13 +134,13 @@ function onDeliteUserList(e) {
     renderUserList();
 }
 
+function setUserDetailList(userDetailList){
+    localStorage.setItem('userDetailList', JSON.stringify(userDetailList));
+}
+
 function getUserDetailList(){
     let userDetailList = JSON.parse(localStorage.getItem('userDetailList'));
     return userDetailList;
-}
-
-function setUserDetailList(userDetailList){
-    localStorage.setItem('userDetailList', JSON.stringify(userDetailList));
 }
 
 function nextUserID() {

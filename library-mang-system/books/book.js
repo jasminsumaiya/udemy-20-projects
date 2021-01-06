@@ -1,26 +1,12 @@
-let bookID = 1;
 let activeID = -1;
-let bookDetailList = [
-    {
-        "ID": bookID++,
-        "ISBN": parseInt(123),
-        "BOOK": "javascript",
-        "AUTHOR": "smith",
-        "PUBLISHER": "Pearson",
-        "QUANTITY": parseInt(20)
-    },
-    {
-        "ID": bookID++,
-        "ISBN": parseInt(987),
-        "BOOK": "JAVA",
-        "AUTHOR": "jhonPaul",
-        "PUBLISHER": "adam",
-        "QUANTITY": parseInt(10)
-    }
-];
-
 window.addEventListener("load", init);
+
 function init(){
+    let bookDetailList = getBookDetailList();
+    if(bookDetailList == null || bookDetailList.length == 0){
+        let bookList = [];
+        setBookDetailList(bookList);
+    }
     renderBookList();
 }
 
@@ -38,10 +24,11 @@ function onClickAddBooks(event) {
     console.log(hasValid);
 
     if(hasValid){
+        let bookDetailList = getBookDetailList();
         if (activeID == -1) {
             bookDetailList.push(
                 {
-                    "ID": bookID++,
+                    "ID": nextBookID(),
                     "ISBN": parseInt(isbn.value),
                     "BOOK": book.value,
                     "AUTHOR": author.value,
@@ -64,6 +51,7 @@ function onClickAddBooks(event) {
             let submit = document.getElementById("submit");
             submit.textContent = "Add Books";
         }
+        setBookDetailList(bookDetailList);
     }
     bookIdDomList.forEach((domItem) => domItem.value = "");
     renderBookList();
@@ -99,6 +87,7 @@ function showSuccess(domElement) {
 function renderBookList() {
     let tableBody = document.getElementsByTagName("tbody");
 
+    let bookDetailList = getBookDetailList();
     tableBody[0].innerHTML = bookDetailList.map((bookItem) => {
         return `<tr>          
                 <td>${bookItem.ID}</td>
@@ -125,6 +114,7 @@ function editBookList(e) {
     activeID = editItemId;
     console.log(editItemId);
 
+    let bookDetailList = getBookDetailList();
     let findItem = bookDetailList.find((bookItem) => bookItem.ID == editItemId);
     console.log(findItem);
 
@@ -140,7 +130,27 @@ function editBookList(e) {
 
 function deliteBookList(e) {
     let deliteItemId = e.currentTarget.getAttribute('data-delite-id');
+    let bookDetailList = getBookDetailList();
     let filteredItem = bookDetailList.filter((bookItem) => bookItem.ID != deliteItemId);
-    bookDetailList = filteredItem;
+    setBookDetailList(filteredItem);
     renderBookList();
+}
+
+function setBookDetailList(bookDetailList){
+    localStorage.setItem('bookDetailList', JSON.stringify(bookDetailList));
+}
+
+function getBookDetailList(){
+    let bookDetailList = JSON.parse(localStorage.getItem('bookDetailList'));
+    return bookDetailList;
+}
+
+function nextBookID() {
+    let bookID = localStorage.getItem('bookID');
+    if(bookID == null){
+        bookID = 0;
+    }
+    bookID++;
+    localStorage.setItem('bookID', bookID);
+    return bookID;
 }

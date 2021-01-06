@@ -19,42 +19,35 @@
         <a href="../users/users.html">Users</a>
     </nav>
 
-    <div class="dropdown">
-        <button class="dropbtn">User
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="user-list">
-            <a>Mani</a>
-            <a>Gopi</a>
-            <a>Umar</a>
-        </div>
-    </div>
+    <div class="header-bar">
+        <div>
+            <select class="dropdown column1" id="user-dropdown">
 
-    <div class="dropdown">
-        <button class="dropbtn">Books
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="book-list">
-            <a>Javascript</a>
-            <a>JAVA</a>
-            <a>nodeJS</a>
+            </select>
         </div>
-    </div>
 
-    <div class="input-count">
-        <input type="text" id="count" placeholder="Enter Books Count">
-    </div>
-    
-    <div>
-        <button type="submit" onclick="onClickAddUser(event)">Add User</button>
+        <div>
+            <select class="dropdown column1" id="book-dropdown">
+
+            </select>
+        </div>
+
+
+        <div class="input-count column1">
+            <input type="text" id="count" placeholder="Enter Books Count">
+        </div>
+
+        <div class="column1">
+            <button type="submit" onclick="onClickAddUser(event)">Add User</button>
+        </div>
     </div>
 
     <div>
         <table id="user-list">
             <tr>
-              <th>ID</th>
-              <th>Username</th> 
-              <th>Book</th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Book</th>
             </tr>
             <!--
             <tr>
@@ -69,7 +62,7 @@
                 <td><ul><li>nodejs</li><li>Javascript</li></ul></td>
               </tr>
               -->
-          </table>
+        </table>
     </div>
 
 </body>
