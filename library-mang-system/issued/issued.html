@@ -3,52 +3,54 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="issued.css" />
     <script src="issued.js"></script>
     <title>My To Do List</title>
 </head>
 
 <body>
-    <nav class="topnav">
-        <a href="../home/home.html">Home</a>
-        <a class="active" href="issued.html">Issued Books</a>
-        <a href="../books/books.html">Books</a>
-        <a href="../users/users.html">Users</a>
-    </nav>
-
-    <div class="header-bar">
-        <div>
-            <select class="dropdown column1" id="user-dropdown">
-
-            </select>
-        </div>
-
-        <div>
-            <select class="dropdown column1" id="book-dropdown">
-
-            </select>
-        </div>
-
-
-        <div class="input-count column1">
-            <input type="text" id="count" placeholder="Enter Books Count">
-        </div>
-
-        <div class="column1">
-            <button type="submit" onclick="onClickAddUser(event)">Add User</button>
-        </div>
-    </div>
-
     <div>
-        <table id="user-list">
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Book</th>
-            </tr>
+        <nav class="topnav">
+            <a href="../home/home.html">Home</a>
+            <a class="active" href="issued.html">Issued Books</a>
+            <a href="../books/books.html">Books</a>
+            <a href="../users/users.html">Users</a>
+        </nav>
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <select class="dropdown" id="user-dropdown" name="User"></select>
+                    <small>Error message</small>
+                </div>
+                <div class="col-sm-3">
+                    <select class="dropdown" id="book-dropdown" name="Book"></select>
+                    <small>Error message</small>
+                </div>
+                <div class="col-sm-3 input-count">
+                    <input type="text" id="count" name="Count" placeholder="Enter Books Count">
+                    <small>Error message</small>
+                </div>
+                <div class="col-sm">
+                    <button type="submit" onclick="onClickAddUser(event)">Add User</button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table id="user-list">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Book</th>
+                </tr>
             <!--
             <tr>
               <td>1</td>
@@ -61,8 +63,8 @@
                 <td>Sumaiya</td>
                 <td><ul><li>nodejs</li><li>Javascript</li></ul></td>
               </tr>
-              -->
-        </table>
+            -->
+            </table>
+        </div>
     </div>
-
 </body>

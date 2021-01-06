@@ -96,7 +96,7 @@ function renderBookList() {
                 <td>${bookItem.AUTHOR}</td>
                 <td>${bookItem.PUBLISHER}</td>
                 <td>${bookItem.QUANTITY}</td>
-                <td></td>
+                <td>0</td>
                 <td><button><i class="fas fa-edit" data-edit-id="${bookItem.ID}" onclick="editBookList(event)"></i></button></td>
                 <td><button><i class="fa fa-trash" data-delite-id="${bookItem.ID}" onclick="deliteBookList(event)"></i></button></td>
                 </tr>`
