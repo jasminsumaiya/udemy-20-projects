@@ -33,7 +33,8 @@ function onClickAddBooks(event) {
                     "BOOK": book.value,
                     "AUTHOR": author.value,
                     "PUBLISHER": publisher.value,
-                    "QUANTITY": parseInt(quantity.value)
+                    "QUANTITY": parseInt(quantity.value),
+                    "ISSUEDBOOK": 0
                 }
             );
         } else {
@@ -45,6 +46,7 @@ function onClickAddBooks(event) {
             editedItem.AUTHOR = author.value;
             editedItem.PUBLISHER = publisher.value;
             editedItem.QUANTITY = quantity.value;
+            //editedItem.ISSUEDBOOK = 0;
 
             activeID = -1;
             //change UPDATE btn into ADD btn
@@ -96,7 +98,7 @@ function renderBookList() {
                 <td>${bookItem.AUTHOR}</td>
                 <td>${bookItem.PUBLISHER}</td>
                 <td>${bookItem.QUANTITY}</td>
-                <td>0</td>
+                <td>${bookItem.ISSUEDBOOK}</td>
                 <td><button><i class="fas fa-edit" data-edit-id="${bookItem.ID}" onclick="editBookList(event)"></i></button></td>
                 <td><button><i class="fa fa-trash" data-delite-id="${bookItem.ID}" onclick="deliteBookList(event)"></i></button></td>
                 </tr>`
