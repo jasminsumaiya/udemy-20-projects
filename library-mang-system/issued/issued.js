@@ -28,9 +28,11 @@ function init() {
         let issuedMaper = {};
         setIssuedBookMaper(issuedMaper);
     }
+
+    rendeIssuedList();
 }
 
-function getUserDetailList() {
+function getUserDetailList() {  
     let userDetailList = JSON.parse(localStorage.getItem('userDetailList'));
     return userDetailList;
 }
@@ -78,9 +80,9 @@ function onClickAddUser(e) {
     if (givenCount > currentQuantity) {
         showError(countDom, `count exceeds the limit ${currentQuantity}`);
         countDom.value = 0;
-    } else {
-        showSuccess(countDom);
-    }
+        return;
+    } 
+    showSuccess(countDom);
 
     let newIssueBookCount = parseInt(selectedBookData.ISSUEDBOOK) + parseInt(countDom.value);
     console.log(newIssueBookCount);
@@ -111,6 +113,38 @@ function onClickAddUser(e) {
     console.log(issuedBookMaper);
 
     setIssuedBookMaper(issuedBookMaper);
+
+    rendeIssuedList();
+}
+
+function rendeIssuedList(){
+    let tableBody = document.getElementsByTagName("tbody");
+
+    let issuedBookMaper = getIssuedBookMaper();  //{}
+    let userDetailList = getUserDetailList();    //[]
+    let bookDetailList = getBookDetailList();    //[]
+    let newDomList = [];
+    let slNo = 1;
+
+    for(var key in issuedBookMaper){
+        let newUser = userDetailList.find((user) => user.ID == key);
+        
+        let bookIssueList = issuedBookMaper[key]; //[]
+
+        let newBookList = bookIssueList.map((item) => {
+            let book = bookDetailList.find((book) => book.ID == item.bookid);
+            return `<li>${book.BOOK} - ${item.count}</li>`;
+        }).join(" ");
+        console.log(newBookList);
+
+        newDomList.push(`<tr>
+                            <td>${slNo++}</td>
+                            <td>${newUser.USERNAME}</td>
+                            <td><ul>${newBookList}</ul></td>
+                        </tr>`);
+    };
+
+    tableBody[0].innerHTML = newDomList.join(" ");
 }
 
 //----form validation--------

@@ -133,10 +133,5 @@ td {
 }
 
 tr {
-    margin: 20px;
-}
-
-.column1 {
-    position: relative;
-    width: 20%;
+    margin-left: 50px;
 }
