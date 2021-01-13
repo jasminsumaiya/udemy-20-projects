@@ -23,7 +23,7 @@ body {
 h1 {
   color: #000;
   margin-left: 70px;
-  margin-bottom: 100px;
+  margin-bottom: 120px;
 }
 
 .play-window {
@@ -46,17 +46,23 @@ h1 {
 .progress {
   background-color: rgba(250, 245, 245, 0.5);
   width: 300px;
-  height: 70px;
+  height: 0px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   margin-left: 30px;
   position: relative;
   visibility: hidden;
+  transition-property: height;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+  transition-delay: 0.2s;
 }
 
 .progress.on-play {
+  height: 70px;
   visibility: visible;
 }
+
 
 .progress input {
   padding: 5px;
@@ -92,4 +98,8 @@ img.img-rotate {
 
 @keyframes rotate {
   50% {transform: rotate(360deg);}
+}
+
+#music-label {
+
 }
