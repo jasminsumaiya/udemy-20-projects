@@ -118,7 +118,6 @@ function updatePlayList() {
     imageDom.src = images[activeMusicIndex];
 
     onPlay = false;
-    showProgressBar();
     audio.load();
     onPlayClick();
 }
