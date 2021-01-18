@@ -90,7 +90,6 @@ function onClickBackward() {
     if(activeMusicIndex < 0){
         activeMusicIndex = musics.length - 1;
     } 
-    
     updatePlayList();
 }
 
@@ -100,7 +99,6 @@ function onClickForward() {
     if(activeMusicIndex > musics.length - 1){
         activeMusicIndex = 0
     } 
-    
     updatePlayList();
 }
 
