@@ -2,19 +2,22 @@ let todoId = 0;
 let activeTodoID = -1;
 let titleList = [];
 
-function onMouseClick(e) {
-    addToList();
-}
-
-function onKeyDown(e) {
-    if (e.keyCode == 13) {
+$(document).ready(() => {
+    $(".add-btn").click(() => {
         addToList();
-    }
-}
+    });
+
+    $(".add-title").keypress((e) => {
+        if (e.keyCode == 13) {
+            addToList();
+        }
+    });
+});
+
 
 //add todo item into array
 function addToList() {
-    let toDoTitle = document.getElementById("add-title");
+    let toDoTitle = $("#add-title");
     let term = toDoTitle.value;
 
     if (term.trim()) {
@@ -52,7 +55,7 @@ function deleteList(e) {
 }
 
 function renderToDoList() {
-    let addedList = document.getElementById("added-list");
+    let addedList = $("#added-list");
     addedList.innerHTML = `<ul>
                     ${titleList.map((todoItem) => `${renderTodoItem(todoItem)}`).join('')}
                           </ul>`;
@@ -102,18 +105,15 @@ function toggleTodoItem(e) {
     renderToDoList();
 }
 
-//edit content
 function editTodoItem(e) {
     e.stopImmediatePropagation();
-    let toDoTitle = document.getElementById("add-title");
     let editItemID = e.currentTarget.getAttribute('data-edit-id');
     //update edited value in the same place
     activeTodoID = editItemID;
     //place the edited item into input box
     let editedItem = titleList.find((todoItem) => todoItem.workID == editItemID);
-    toDoTitle.value = editedItem["workTitle"];
+    $("#add-title").value = editedItem["workTitle"];
     //change ADD btn into UPDATE btn 
     let submit = document.querySelector(".add-btn");
     submit.textContent = "UPDATE";
 }
-
