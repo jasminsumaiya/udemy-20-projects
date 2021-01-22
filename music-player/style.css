@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Questrial&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Questrial', sans-serif;
+  font-family: "Questrial", sans-serif;
   background-image: linear-gradient(#ffcccc, #fff);
   background-repeat: no-repeat;
   display: flex;
@@ -35,7 +35,7 @@ h1 {
   justify-content: center;
   display: flex;
   position: relative;
-  box-shadow: 10px 10px 10px pink
+  box-shadow: 10px 10px 10px pink;
 }
 
 .play-window i {
@@ -63,7 +63,6 @@ h1 {
   visibility: visible;
 }
 
-
 .progress input {
   padding: 5px;
   margin: -15px 120px;
@@ -81,7 +80,7 @@ h1 {
   position: relative;
 }
 
-img{
+img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -93,9 +92,14 @@ img{
 }
 
 img.img-rotate {
-  animation:rotate 4s linear infinite;
+  animation: rotate infinite 4s linear;
 }
 
 @keyframes rotate {
-  50% {transform: rotate(360deg);}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
