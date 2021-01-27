@@ -1,0 +1,12 @@
+{
+  "libs": [
+    {
+      "name": "lodash",
+      "version": "1.0.0"
+    },
+    {
+      "name": "jquery",
+      "version": "1.0.0"
+    }
+  ]
+}
