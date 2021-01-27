@@ -2,7 +2,6 @@
 const fs = require('fs');
 const fetch = require("node-fetch");
 const path = require('path'); 
-//const extract = require('extract-zip')
 
 fs.readFile('dependencies.json', 'utf8', function (err,data) {
   if (err) {
@@ -10,21 +9,17 @@ fs.readFile('dependencies.json', 'utf8', function (err,data) {
   }
   let dep = JSON.parse(data);      
   let dependancies = dep.libs;
-  console.log("dependancies");
-  console.log(dependancies);
+  //console.log(dependancies);
 
   fetch("https://packagemanager.vercel.app/registry.json")
         .then(res => res.json())
         .then(data => {
             let registry = data.configs;
-
-            console.log("registry");
-            console.log(registry);
+            //console.log(registry);
 
             dependancies.forEach((depData) => {
-            
                 let registryItem = registry.find((registryData) => depData.name == registryData.name && depData.version == registryData.version);
-                console.log(registryItem);
+                //console.log(registryItem);
 
                 let dir = path.join(__dirname, 'ppm_modules');
 
