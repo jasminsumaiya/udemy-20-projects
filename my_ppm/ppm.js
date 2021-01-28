@@ -2,6 +2,7 @@
 const fs = require('fs');
 const fetch = require("node-fetch");
 const path = require('path'); 
+const AnyFile = require('any-file');
 
 fs.readFile('dependencies.json', 'utf8', function (err,data) {
   if (err) {
@@ -40,12 +41,23 @@ fs.readFile('dependencies.json', 'utf8', function (err,data) {
    
 function creatModule(registryItem) {
     let fileName = registryItem.name;
+    const af = new AnyFile();
+    let fromFile = registryItem.path;
+    let toFile = path.join(__dirname, 'ppm_modules', fileName);
 
-    fs.writeFile(path.join(__dirname, 'ppm_modules',fileName), JSON.stringify(registryItem), function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-    });
+        af.from(fromFile).to(toFile, function(err, res) {
+            if (res) {
+            console.log("File copied!");
+            } else {
+            console.log("File not copied!");
+            }
+        });
 }
+
+/*fs.writeFile(modulePath, Buffer.alloc(data, 'utf-8'), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });*/
 
 
 
