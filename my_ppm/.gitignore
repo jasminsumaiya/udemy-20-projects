@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/ppm_modules
 /.pnp
 .pnp.js
 

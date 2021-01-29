@@ -1,63 +1,26 @@
 'use strict';
-
 const fs = require('fs');
 const fetch = require("node-fetch");
-const path = require('path'); 
-const AnyFile = require('any-file');
-const http = require('https');
-const request = require('superagent');
+const path = require('path');
+const axios = require('axios');
 var AdmZip = require('adm-zip');
-
-
-let dir = path.join(__dirname, 'ppm_modules/');
-fs.rmdirSync(dir, {recursive: true});
-console.log("Folder Deleted!");
-
-fs.mkdirSync(dir);
-console.log('Directory created successfully!'); 
-
-/*let registryItem = {
-    "name": "lodash",
-    "version": "1.0.0",
-    "path": "https://ppm-registry.s3.ap-south-1.amazonaws.com/lodash/1.0.0.zip"
-}
-creatModule(registryItem);
-
-return;*/
-
-
-fs.readFile('dependencies.json', 'utf8', function (err,data) {
-  if (err) {
-    return console.log(err);
-  }
-       
-  let dependancies = JSON.parse(data);
-  //console.log(dependancies);
-
-  fetch("https://packagemanager.vercel.app/registry.json")
-        .then(res => res.json())
-        .then(data => {
-            let registry = data.configs;
-            //console.log("registry");
-            //console.log(registry);
-
-            let dir = path.join(__dirname, 'ppm_modules/');
-            fs.rmdirSync(dir, {recursive: true});
-            console.log("Folder Deleted!");
-
+let dependencies = JSON.parse(fs.readFileSync('dependencies.json'));
+console.log(`dependencies: ${JSON.stringify(dependencies)}`)
+fetch("https://packagemanager.vercel.app/registry.json")
+    .then(res => res.json())
+    .then(data => {
+        let dir = path.join(__dirname, 'ppm_modules/');
+        if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir);
-            console.log('Directory created successfully!'); 
+            console.log('Directory created successfully!');
+        }
+        let registry = data.configs;
+        downloadPPMModules(dependencies, registry);
+    });
 
-            downloadPPMModules(dependancies, registry);
-        });
-});
-
-function downloadPPMModules(dependancies, registry){
-    
-    for(var key in dependancies) {
-        let registryItem = registry.find((registryData) => key == registryData.name && dependancies[key] == registryData.version);
-        //console.log(`registryItem ${JSON.stringify(registryItem)}`);
-
+function downloadPPMModules(dependencies, registry){
+    for(var key in dependencies) {
+        let registryItem = registry.find((registryData) => key == registryData.name && dependencies[key] == registryData.version);
         if(registryItem != undefined){
             creatModule(registryItem);
         }else {
@@ -65,79 +28,20 @@ function downloadPPMModules(dependancies, registry){
         }
     }
 }
-   
 function creatModule(registryItem) {
-    let fileName = registryItem.name;
-    let af = new AnyFile();
     let fromFile = registryItem.path;
-    let toFile = path.join(__dirname, 'ppm_modules', `${fileName}.zip`); 
-
-    console.log(`fromfile: ${fromFile}`);
-    console.log(`toFile: ${toFile}`);
-    
-    fs.mkdirSync(toFile);
-    
-    af.from(fromFile).to(toFile, function(err, res) {
-        if (res) {
-            console.log("File copied!");
-        } else {
-            console.log("File not copied!");
-        }
-    });
-}
-
-
-
-/*
-
-    request.get({url: fromFile, encoding: null}, (err, res, body) => {
-        if(err) {
-            return console.error(`Error occurred while download a module - ${fromFile}`)
-        }
-        var zip = new AdmZip(body);
-        zip.extractAllTo(toFile, true);
-    });
-
-
-    request.get(fromFile).on('error', (error) => {
-            console.log(error);
+    let toFile = path.join(__dirname, 'ppm_modules');
+    axios({
+        method: 'get',
+        url: fromFile,
+        responseType: 'arraybuffer'
+    })
+        .then(function (response) {
+            var zip = new AdmZip(response.data);
+            zip.extractAllTo(toFile, true);
+            console.log(`Module ${registryItem.name} Installed @ ${toFile} path`);
         })
-        .pipe(fs.createWriteStream(toFile))
-        .on('finish', () => {
-            console.log("finish");
-    });
-
-
-    af.from(fromFile).to(toFile, function(err, res) {
-        if (res) {
-            console.log("File copied!");
-        } else {
-            console.log("File not copied!");
-        }
-    });
-
-    ////////
-
-    download(fromFile, toFile, function(err) {
-        if (err) {
-            console.log("File not copied!");
-        } else {
-            console.log("File copied!");
-        }
-    });
-
-    function download(url, dest, cb) {
-        var file = fs.createWriteStream(dest);
-        http.get(url, (response) => {
-            response.pipe(file);
-                file.on('finish', () => {
-                file.close(cb);  
-                });
-        }).on('error', (err) => { 
-            fs.unlink(dest); 
-            if (cb) cb(err.message);
+        .catch(function (error) {
+            return console.error(`Error occurred while download a module - ${registryItem.name}`)
         });
-    };
- */
-
-
+}
