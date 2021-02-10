@@ -4,8 +4,10 @@ const fetch = require("node-fetch");
 const path = require('path');
 const axios = require('axios');
 var AdmZip = require('adm-zip');
+
 let dependencies = JSON.parse(fs.readFileSync('dependencies.json'));
 console.log(`dependencies: ${JSON.stringify(dependencies)}`)
+
 fetch("https://packagemanager.vercel.app/registry.json")
     .then(res => res.json())
     .then(data => {
