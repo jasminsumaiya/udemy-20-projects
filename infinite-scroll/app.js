@@ -3,8 +3,8 @@ let limit = 3;
 let page = 2;
 
 function init() {
-  let findBox = document.getElementById("find-box");
-  findBox.addEventListener("keyup", (e) => {
+  let inputBox = document.getElementById("find-box");
+  inputBox.addEventListener("keyup", (e) => {
     if (e.keyCode == 13) {
       event.preventDefault();
       onFilterPost();
@@ -57,12 +57,12 @@ async function allPost() {
 }
 
 async function onFilterPost() {
-  let findBox = document.getElementById("find-box").value.toLowerCase();
+  let inputBoxValue = document.getElementById("find-box").value.toLowerCase();
   let allPosts = await allPost();
   console.log("filtered");
 
   let matchedPost = allPosts.filter((post) => {
-    return post.title.toLowerCase().includes(findBox);
+    return post.title.toLowerCase().includes(inputBoxValue);
   });
   //console.log(matchedPost);
   renderPost(matchedPost);
