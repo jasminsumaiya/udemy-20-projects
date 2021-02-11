@@ -45,22 +45,9 @@ async function getPost() {
 }
 
 async function showPost() {
-  let container = document.getElementById("infinite-con");
   let posts = await getPost();
   //console.log(posts);
-  container.innerHTML = posts
-    .map((post, index) => {
-      return `<div class="sl-no" id=""sl-no">${index + 1}</div>
-                                <div class="content">
-                                    <strong>
-                                        ${post.title}
-                                    </strong>
-                                    <p>
-                                        ${post.body}
-                                    </p>
-                                </div>`;
-    })
-    .join(" ");
+  renderPost(posts);
 }
 
 async function allPost() {
@@ -71,16 +58,20 @@ async function allPost() {
 
 async function onFilterPost() {
   let findBox = document.getElementById("find-box").value.toLowerCase();
-  let container = document.getElementById("infinite-con");
   let allPosts = await allPost();
   console.log("filtered");
 
   let matchedPost = allPosts.filter((post) => {
     return post.title.toLowerCase().includes(findBox);
   });
-  console.log(matchedPost);
+  //console.log(matchedPost);
+  renderPost(matchedPost);
+}
 
-  container.innerHTML = matchedPost
+function renderPost(posts) {
+  let container = document.getElementById("infinite-con");
+
+  container.innerHTML = posts
     .map((post, index) => {
       return `<div class="sl-no" id=""sl-no">${index + 1}</div>
                                 <div class="content">
