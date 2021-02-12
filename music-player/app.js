@@ -61,7 +61,7 @@ function showProgressBar() {
     if (onPlay) {
         progressBar.classList.add("on-play");
     } else {
-        progressBar.classList.remove("on-play");
+        progressBar.classList.remove("on-play"); 
     }
 }
 

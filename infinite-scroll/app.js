@@ -1,5 +1,5 @@
 window.addEventListener("load", init);
-let limit = 3;
+let limit = 2;
 let page = 2;
 
 function init() {
@@ -13,12 +13,23 @@ function init() {
 
   showPost();
 
+  let limitInputBox = document.getElementById("limit-input");
+  limitInputBox.addEventListener("input", (e) => {
+    if (limitInputBox.value.trim() != "") {
+      limit = parseInt(limitInputBox.value);
+      showPost();
+      return;
+    }
+  });
+
   window.addEventListener("scroll", () => {
     let { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-    if (scrollTop + clientHeight > scrollHeight - 5) {
-      showLoading();
-      //console.log("scrollTop:",scrollTop,"scrollHeight",scrollHeight,"clientHeight:",clientHeight);
+    if (limitInputBox.value.trim() == "") {
+      if (scrollTop + clientHeight == scrollHeight) {
+        showLoading();
+        //console.log("scrollTop:",scrollTop,"scrollHeight",scrollHeight,"clientHeight:",clientHeight);
+      }
     }
   });
 }
@@ -46,7 +57,7 @@ async function getPost() {
 
 async function showPost() {
   let posts = await getPost();
-  //console.log(posts);
+  console.log(posts);
   renderPost(posts);
 }
 
@@ -62,7 +73,10 @@ async function onFilterPost() {
   console.log("filtered");
 
   let matchedPost = allPosts.filter((post) => {
-    return post.title.toLowerCase().includes(inputBoxValue);
+    return (
+      post.title.toLowerCase().includes(inputBoxValue) ||
+      post.body.toLowerCase().includes(inputBoxValue)
+    );
   });
   //console.log(matchedPost);
   renderPost(matchedPost);
