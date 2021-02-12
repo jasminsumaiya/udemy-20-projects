@@ -18,7 +18,6 @@ function init() {
     if (limitInputBox.value.trim() != "") {
       limit = parseInt(limitInputBox.value);
       showPost();
-      return;
     }
   });
 
