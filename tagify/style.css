@@ -1,135 +1,148 @@
 * {
-    box-sizing: border-box;
-}
-  
-body {
-    font-family: 'Questrial', sans-serif;
-    background-image:  #fff;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-}
-  
-.tag-container {
-    border-style: solid;
-    border-radius: 10px;
-    min-height: 70px;
-    width: 750px;
-    position: relative;
-    margin-top: -200px;
-    clear:left;
-    display: table;
-    z-index: 9;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Questrial", sans-serif;
+  background-image: #fff;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* position: fixed; 
+  margin-top: 20px;*/
+}
+
+.tag-container {
+  border-style: solid;
+  border-radius: 10px;
+
+  width: 750px;
+
+  clear: left;
+  display: table;
+  z-index: 9;
+  margin: 0;
+}
+/*
+margin-top: -200px;
+min-height: 70px;
+position: relative;
+*/
+
 .tag {
-    border-style: groove;
-    border-radius: 10px;
-    width: auto;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    background-color: gainsboro;
-    margin: 10px 10px;
-    
+  border-style: groove;
+  border-radius: 10px;
+  width: auto;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  background-color: gainsboro;
+  margin: 10px 10px;
 }
 
 #flag_img {
-    width: 40px;
-    height: 20px;   
-    margin-left: 2px;
-    margin-top: 10px;
+  width: 40px;
+  height: 20px;
+  margin-left: 2px;
+  margin-top: 10px;
 }
 
 p {
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin: 10px 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 10px 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #trace {
-    margin: 10px 2px;
-    position: relative;
+  margin: 10px 2px;
+  position: relative;
 }
 
 .text-box {
-    height: 45px;
-    width: 250px;
-    border-style: none;
-    border-radius: 10px;
-    background-color:  #fff;
-    margin-top: 10px;
+  height: 45px;
+  width: 250px;
+  border-style: none;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-top: 10px;
 }
 
 .text-box:focus {
-    outline: none;
+  outline: none;
 }
 
 ul {
-    width: 750px;
-    list-style: none;
-    border-style: groove;
-    padding: 20px;
-    margin-top: -3px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    max-height: 300px;
-    overflow: scroll;
+  width: 750px;
+  list-style: none;
+  border-style: groove;
+  padding: 20px;
+  margin-top: -3px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-height: 300px;
+  overflow: scroll;
 }
 
 .dropdown_menu-6 {
-    animation: growDown 800ms ease-in-out forwards;
-    transform-origin: top center;
+  animation: growDown 800ms ease-in-out forwards;
+  transform-origin: top center;
 }
 
 @keyframes growDown {
-    0% {
-      transform: scaleY(0)
-    }
-    80% {
-      transform: scaleY(1.1)
-    }
-    100% {
-      transform: scaleY(1)
-    }
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 
 li {
-    border-style: groove;
-    border-radius: 10px;
-    width: 240px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    background-color: gainsboro;
-    margin: 10px 10px;
+  border-style: groove;
+  border-radius: 10px;
+  width: 240px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  background-color: gainsboro;
+  margin: 10px 10px;
 }
 
 li:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #country-flag {
-    width: 40px;
-    height: 20px;   
-    margin-top: 10px;
-    padding-right: 10px;
+  width: 40px;
+  height: 20px;
+  margin-top: 10px;
+  padding-right: 10px;
 }
 
 .country-name {
-    height: 20px;   
-    margin-top: 10px;
-    padding-right: 10px;
+  height: 20px;
+  margin-top: 10px;
+  padding-right: 10px;
 }
 
 /* Alignment */
 .alignleft {
-    float:left;
+  float: left;
 }

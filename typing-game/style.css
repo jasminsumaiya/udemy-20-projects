@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Questrial&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Questrial", sans-serif;
+  background: rgb(214, 220, 224);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.top-bar {
+  background: rgb(69, 70, 80);
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: large;
+}
+
+label {
+  margin: 0;
+}
+
+.level {
+  border-radius: 5px;
+  margin: 10px;
+  padding: 3px;
+  width: 150px;
+}
+
+.game-container {
+  background: rgb(159, 159, 167);
+  text-align: center;
+  left: 450px;
+  width: 500px;
+  height: 280px;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+}
+
+h2 {
+  background: rgb(69, 70, 80);
+  padding: 20px;
+  margin: 10px 10px;
+  border-radius: 10px;
+}
+
+.time-score {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 30px;
+}
+
+#type-letter {
+  margin-bottom: 2px;
+}
+
+#word-con {
+  height: 20px;
+  margin-bottom: 30px;
+  font-size: x-large;
+}
+
+.text-box {
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: x-large;
+  border-style: none;
+}
+
+.settings {
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 8px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.game-over-con {
+  background: rgb(159, 159, 167);
+  text-align: center;
+  left: 450px;
+  width: 500px;
+  height: 280px;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+  display: none;
+}
+
+button {
+  border-radius: 5px;
+  font-size: x-large;
+  background: rgb(69, 70, 80);
+  color: #fff;
+}
+
+.game-over-con.show {
+  display: block;
+}
+
+/*.game-over-con,
+.subscribe:hover > .game-container {
+  display: none;
+}
+
+.subscribe:hover > .game-over-con {
+  display: block;
+}*/

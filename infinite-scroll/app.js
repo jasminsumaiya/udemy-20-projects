@@ -22,13 +22,14 @@ function init() {
   });
 
   window.addEventListener("scroll", () => {
-    let { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (limitInputBox.value.trim() != "") {
+      return;
+    }
 
-    if (limitInputBox.value.trim() == "") {
-      if (scrollTop + clientHeight == scrollHeight) {
-        showLoading();
-        //console.log("scrollTop:",scrollTop,"scrollHeight",scrollHeight,"clientHeight:",clientHeight);
-      }
+    let { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if (scrollTop + clientHeight == scrollHeight) {
+      showLoading();
+      //console.log("scrollTop:",scrollTop,"scrollHeight",scrollHeight,"clientHeight:",clientHeight);
     }
   });
 }

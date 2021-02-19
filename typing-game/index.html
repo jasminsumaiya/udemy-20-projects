@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <title>SPEED TYPER</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <label for="Diffculty">Diffculty:</label>
+            <select name="level" id="level" class="level">
+                <option value="easy">Easy</option>
+                <option value="meadium">Meadium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+        <div class="subscribe">
+            <div class="game-container">
+                <h2> 🏃‍♀️ SPEED TYPER 🏃 </h2>
+                <div class="time-score">
+                    <p>Time left:<span>5s</span></p>
+                    <p>Score:<span>10</span></p>
+                </div>
+                <p id="type-letter">Type the following:</p>
+                <div id="word-con">SPACE</div>
+                <input type="text" id="text-box" class="text-box" placeholder="Type the word here.." />
+            </div>
+            <div class="settings">
+                <i class="fas fa-cogs"></i>
+            </div> 
+            <div class="game-over-con show">
+                <h2>Time ran out</h2>
+                <p>Your final score is <span>0</span></p>
+                <button>Reload</button>
+            </div>
+        </div>
+
+        
+        
+    </div>
+
+
+
+</body>
+
+</html>

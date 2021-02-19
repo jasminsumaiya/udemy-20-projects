@@ -1,20 +1,20 @@
-window.addEventListener('load', init);
+window.addEventListener("load", init);
 
 function init() {
-  const video = document.getElementById('video');
+  const video = document.getElementById("video");
   video.muted = false;
-  const play = document.getElementById('play');
-  const stop = document.getElementById('stop');
-  const progress = document.getElementById('progress');
+  const play = document.getElementById("play");
+  const stop = document.getElementById("stop");
+  const progress = document.getElementById("progress");
 
-  video.addEventListener('click', toggleVideoStatus);
-  video.addEventListener('pause', updatePlayIcon);
-  video.addEventListener('play', updatePlayIcon);
-  video.addEventListener('timeupdate', updateProgress);
+  video.addEventListener("click", toggleVideoStatus);
+  video.addEventListener("pause", updatePlayIcon);
+  video.addEventListener("play", updatePlayIcon);
+  video.addEventListener("timeupdate", updateProgress);
 
-  play.addEventListener('click', toggleVideoStatus);
-  stop.addEventListener('click', stopVideo);
-  progress.addEventListener('change', setVideoProgress);
+  play.addEventListener("click", toggleVideoStatus);
+  stop.addEventListener("click", stopVideo);
+  progress.addEventListener("change", setVideoProgress);
 
   const muteBtn = document.getElementById("volumeIcone");
   muteBtn.addEventListener("click", toggleMute);
@@ -25,7 +25,7 @@ function init() {
 }
 
 function toggleVideoStatus() {
-  const video = document.getElementById('video');
+  const video = document.getElementById("video");
   if (video.paused) {
     video.play();
   } else {
@@ -34,8 +34,8 @@ function toggleVideoStatus() {
 }
 
 function updatePlayIcon() {
-  const play = document.getElementById('play');
-  const video = document.getElementById('video');
+  const play = document.getElementById("play");
+  const video = document.getElementById("video");
   if (video.paused) {
     play.innerHTML = `<i class="fa fa-play fa-2x"></i>`;
   } else {
@@ -44,39 +44,48 @@ function updatePlayIcon() {
 }
 
 function updateProgress() {
-  const progress = document.getElementById('progress');
-  const video = document.getElementById('video');
-  const timestamp = document.getElementById('timestamp');
+  const progress = document.getElementById("progress");
+  const video = document.getElementById("video");
+  const timestamp = document.getElementById("timestamp");
 
+  // Video element always provides us time in Seconds. (i.e) currentTime and duration both are in seconds
   progress.value = (video.currentTime / video.duration) * 100;
 
-  let mins = Math.floor(video.currentTime / 60);
-  if (mins < 10) {
-    mins = '0' + String(mins);
-  }
+  /*let progressBarLength = 80;
+  let completedPercentage = (video.currentTime / video.duration) * 100; // 50% completed
+  let currentProgressValue = progressBarLength * (completedPercentage / 100);
+  progress.value = currentProgressValue;*/
 
+  console.log(video.currentTime);
+  console.log(video.duration);
+
+  // Display the completed time in minute:second format
+  let minutes = Math.floor(video.currentTime / 60);
+  if (minutes < 10) {
+    minutes = "0" + String(minutes);
+  }
   let secs = Math.floor(video.currentTime % 60);
   if (secs < 10) {
-    secs = '0' + String(secs);
+    secs = "0" + String(secs);
   }
-
-  timestamp.innerHTML = `${mins}:${secs}`;
+  timestamp.innerHTML = `${minutes}:${secs}`;
 }
 
 function stopVideo() {
-  const stop = document.getElementById('stop');
+  const stop = document.getElementById("stop");
   video.currentTime = 0;
   video.pause();
 }
 
 function setVideoProgress() {
-  const progress = document.getElementById('progress');
-  const video = document.getElementById('video');
+  const progress = document.getElementById("progress");
+  const video = document.getElementById("video");
+  console.log(progress.value);
   video.currentTime = (+progress.value * video.duration) / 100;
 }
 
 function toggleMute() {
-  const video = document.getElementById('video');
+  const video = document.getElementById("video");
   const muteBtn = document.getElementById("volumeIcone");
   if (video.muted === false) {
     video.muted = true;
@@ -90,7 +99,7 @@ function toggleMute() {
 }
 
 function setVolumeProgress(e) {
-  const video = document.getElementById('video');
+  const video = document.getElementById("video");
   const muteBtn = document.getElementById("volumeIcone");
   video.volume = e.target.value;
   if (video.volume == 0) {
