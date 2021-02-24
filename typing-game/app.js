@@ -46,7 +46,7 @@ function onClickReload() {
   //restart the time and score
   let inputDom = document.getElementById("text-box");
   inputDom.value = "";
-  document.getElementById("text-box").focus();
+  inputDom.focus();
 
   let score = document.getElementById("score");
   score.textContent = 0;
@@ -87,6 +87,7 @@ function getRandomWord() {
 function onInput() {
   let inputDomValue = document.getElementById("text-box").value;
   let wordContainerValue = document.getElementById("word-con").textContent;
+
   if (inputDomValue == wordContainerValue) {
     let score = document.getElementById("score");
     let inputDom = document.getElementById("text-box");
