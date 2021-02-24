@@ -6,7 +6,7 @@
 
 body {
   font-family: "Questrial", sans-serif;
-  background: rgb(214, 220, 224);
+  background: #2c3e50;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ body {
 }
 
 .top-bar {
-  background: rgb(69, 70, 80);
+  background: #34495e;
   width: 100%;
   top: 0;
   left: 0;
@@ -32,6 +32,15 @@ body {
   justify-content: center;
   color: #fff;
   font-size: large;
+}
+
+select {
+  background: #dce3f5;
+}
+
+select:focus,
+button:focus {
+  outline: 0;
 }
 
 label {
@@ -45,19 +54,24 @@ label {
   width: 150px;
 }
 
+.top-bar.open {
+  display: none;
+}
+
 .game-container {
-  background: rgb(159, 159, 167);
+  background: #34495e;
   text-align: center;
   left: 450px;
-  width: 500px;
+  width: 537px;
   height: 280px;
   border-radius: 10px;
   color: #fff;
   position: absolute;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
-  background: rgb(69, 70, 80);
+  background: rgba(0, 0, 0, 0.3);
   padding: 20px;
   margin: 10px 10px;
   border-radius: 10px;
@@ -97,25 +111,28 @@ h2 {
   position: absolute;
   bottom: 30px;
   left: 30px;
+  cursor: pointer;
 }
 
 .game-over-con {
-  background: rgb(159, 159, 167);
+  background: #34495e;
   text-align: center;
   left: 450px;
-  width: 500px;
+  width: 537px;
   height: 280px;
   border-radius: 10px;
   color: #fff;
   position: absolute;
   display: none;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
-button {
+.reload {
   border-radius: 5px;
   font-size: x-large;
-  background: rgb(69, 70, 80);
+  background: #273747;
   color: #fff;
+  cursor: pointer;
 }
 
 .game-over-con.show {

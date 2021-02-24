@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        <div class="top-bar">
+        <div class="top-bar open" id="top-bar">
             <label for="Diffculty">Diffculty:</label>
             <select name="level" id="level" class="level">
                 <option value="easy">Easy</option>
@@ -22,29 +22,26 @@
                 <option value="hard">Hard</option>
             </select>
         </div>
-        <div class="subscribe">
+        <div class="game-con">
             <div class="game-container">
                 <h2> 🏃‍♀️ SPEED TYPER 🏃 </h2>
                 <div class="time-score">
-                    <p>Time left:<span>5s</span></p>
-                    <p>Score:<span>10</span></p>
+                    <p>Time left : <span id="time">10</span>s</p>
+                    <p>Score:<span id="score">0</span></p>
                 </div>
                 <p id="type-letter">Type the following:</p>
-                <div id="word-con">SPACE</div>
-                <input type="text" id="text-box" class="text-box" placeholder="Type the word here.." />
+                <div id="word-con"></div>
+                <input type="text" id="text-box" class="text-box" placeholder="Type the word here.." autofocus />
             </div>
-            <div class="settings">
-                <i class="fas fa-cogs"></i>
+            <div>
+                <button class="settings" id="settings"><i class="fas fa-cogs"></i></button>
             </div> 
-            <div class="game-over-con show">
+            <div class="game-over-con show" id="game-over-con">  
                 <h2>Time ran out</h2>
-                <p>Your final score is <span>0</span></p>
-                <button>Reload</button>
+                <p>Your final score is <span id="final-score">0</span></p>
+                <button class="reload" id="reload">Reload</button>
             </div>
         </div>
-
-        
-        
     </div>
 
 
