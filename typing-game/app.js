@@ -26,9 +26,18 @@ const words = [
 
 function init() {
   let settingBtn = document.getElementById("settings");
+  let topBar = document.getElementById("top-bar");
+
   settingBtn.addEventListener("click", () => {
-    let topBar = document.getElementById("top-bar");
     topBar.classList.toggle("open");
+    //stop the time interval
+    clearInterval(timeLeft);
+  });
+
+  let selectLevelDomEl = document.getElementById("level");
+  selectLevelDomEl.addEventListener("change", () => {
+    topBar.classList.add("open");
+    timeLeft = setInterval(toSetTime, 1000);
   });
 
   let reload = document.getElementById("reload");
