@@ -1,8 +1,9 @@
-window.addEventListener("load", init);
+//window.addEventListener("load", initIssuedPage);
 //let issuedID = 0;
 //let issuedList = [];
 
-function init() {
+function initIssuedPage() {
+  console.log("initIssuedPage");
   let userDropdown = document.getElementById("user-dropdown");
   let userDetailList = getUserDetailList();
 
@@ -62,7 +63,7 @@ function setIssuedBookMaper(issuedMaper) {
   localStorage.setItem("issuedBookMaper", JSON.stringify(issuedMaper));
 }
 
-function onClickAddUser(e) {
+function onIssueUserClick(e) {
   let userDropdown = document.getElementById("user-dropdown");
   let bookDropdown = document.getElementById("book-dropdown");
   let countDom = document.getElementById("count");
@@ -127,7 +128,6 @@ function onClickAddUser(e) {
 }
 
 function rendeIssuedList() {
-  console.log("rendeIssuedList");
   let tableBody = document.getElementsByTagName("tbody");
 
   let issuedBookMaper = getIssuedBookMaper(); //{}
@@ -135,7 +135,7 @@ function rendeIssuedList() {
   let bookDetailList = getBookDetailList(); //[]
   let newDomList = [];
   let slNo = 1;
-  //console.log(bookDetailList);
+
   for (var key in issuedBookMaper) {
     let newUser = userDetailList.find((user) => user.ID == key);
 
@@ -143,14 +143,11 @@ function rendeIssuedList() {
 
     let newBookList = bookIssueList
       .map((item) => {
-        let book = bookDetailList.find(
-          (bookItem) => bookItem.ID == item.bookid
-        );
-        console.log("book", book);
+        let book = bookDetailList.find((book) => book.ID == item.bookid);
         return `<li>${book.BOOK} - ${item.count}</li>`;
       })
       .join(" ");
-    //console.log(newBookList);
+    console.log(newBookList);
 
     newDomList.push(`<tr>
                             <td>${slNo++}</td>

@@ -68,7 +68,7 @@ function init() {
     textBox.classList.remove("show");
   });
 
-  //text-plot
+  //on click readBtn to read text area
   let textPlot = document.getElementById("text-plot");
   let readBtn = document.getElementById("read-btn");
   readBtn.addEventListener("click", () => {
@@ -76,6 +76,7 @@ function init() {
     speakText();
   });
 
+  //get voice select list
   let voiceData = setSpeech();
   voiceData
     .then((voices) => {
@@ -87,6 +88,7 @@ function init() {
       console.log(err);
     });
 
+  //set the voice to change the select value
   let selectDomEl = document.getElementById("voices");
   selectDomEl.addEventListener("change", (e) => {
     message.voice = voiceList.find((voice) => voice.name === e.target.value);
