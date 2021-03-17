@@ -1,65 +1,32 @@
-window.addEventListener("click", init);
-
+window.addEventListener("load", init);
 var active = false;
-var currentX;
-var currentY;
-var initialX;
-var initialY;
-var xOffset = 0;
-var yOffset = 0;
 
 function init() {
-  var container = document.getElementById("drag-container");
-
-  container.addEventListener("mousedown", dragStart, false);
-  container.addEventListener("mouseup", dragEnd, false);
-  container.addEventListener("mousemove", drag, false);
+  var dragItem = document.getElementById("drag-item");
+  dragItem.addEventListener("mousedown", onMouseDown);
 }
 
-function dragStart(e) {
-  var dragItem = document.getElementById("container");
-
-  if (e.type === "touchstart") {
-    initialX = e.touches[0].clientX - xOffset;
-    initialY = e.touches[0].clientY - yOffset;
-  } else {
-    initialX = e.clientX - xOffset;
-    initialY = e.clientY - yOffset;
-  }
-
-  if (e.target === dragItem) {
-    active = true;
-  }
+function onMouseDown(e) {
+  var container = document.getElementById("container");
+  container.addEventListener("mousemove", onMouseMove);
+  container.addEventListener("mouseup", onMouseUp);
+  active = true;
+  console.log("mousedown");
 }
 
-function dragEnd() {
-  initialX = currentX;
-  initialY = currentY;
-
-  active = false;
-}
-
-function drag(e) {
-  var dragItem = document.querySelector("#container");
+function onMouseMove(e) {
+  console.log("mousemove");
 
   if (active) {
-    e.preventDefault();
-
-    if (e.type === "touchmove") {
-      currentX = e.touches[0].clientX - initialX;
-      currentY = e.touches[0].clientY - initialY;
-    } else {
-      currentX = e.clientX - initialX;
-      currentY = e.clientY - initialY;
-    }
-
-    xOffset = currentX;
-    yOffset = currentY;
-
-    setTranslate(currentX, currentY, dragItem);
+    var dragItem = document.getElementById("drag-item");
+    dragItem.style.left = `${e.clientX}px`;
+    dragItem.style.top = `${e.clientY}px`;
   }
 }
 
-function setTranslate(xPos, yPos, el) {
-  el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+function onMouseUp(e) {
+  var container = document.getElementById("container");
+  container.removeEventListener("mousemove", onMouseMove);
+  active = false;
+  console.log("mouseup");
 }
