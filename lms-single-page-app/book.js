@@ -45,7 +45,7 @@ function onClickAddBooks(event) {
       editedItem.AUTHOR = author.value;
       editedItem.PUBLISHER = publisher.value;
       editedItem.QUANTITY = quantity.value;
-      editedItem.ISSUEDBOOK = 0;
+      //editedItem.ISSUEDBOOK = 0;
 
       activeBookID = -1;
       //change UPDATE btn into ADD btn

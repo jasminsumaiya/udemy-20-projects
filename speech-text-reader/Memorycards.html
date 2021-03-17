@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://127.0.0.1:5500/memory-cards/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./Memorycards_files/all.min.css">
+    <link rel="stylesheet" href="./Memorycards_files/style.css">
+    <script src="./Memorycards_files/app.js"></script>
+    <title>Memorycards</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="first-window">
+            <h2 class="heading">Memory Cards</h2>
+            <p class="add-card"><i class="fa fa-plus" aria-hidden="true"></i>Add New Card</p>
+        </div>
+
+        <div>
+            <div class="second-window">
+                <div class="question">
+                    <label for="question">Question</label>
+                    <input type="text" id="question" placeholder="Enter question...">
+                </div>
+                <div class="answer">
+                    <label for="answer">Answer</label>
+                    <input type="text" id="answer" placeholder="Enter answer...">
+                </div>
+            </div>
+            <p class="add-btn"><i class="fa fa-plus" aria-hidden="true"></i> Add Card</p>
+        </div>
+
+        <div class="third-window">
+            <div class="card show-card">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h1>flip-card-front</h1> 
+                    </div>
+                    <div class="flip-card-back">
+                      <h1>flip-card-back</h1> 
+                    </div>
+                </div>
+            </div>
+            <div class="right-left-arrow">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <span class="page">1/2</span>
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="clear-card">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <p>Clear Cards</p>
+        </div>
+    </div>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

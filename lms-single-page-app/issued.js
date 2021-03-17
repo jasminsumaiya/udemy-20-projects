@@ -156,7 +156,7 @@ function rendeIssuedList() {
                         </tr>`);
   }
 
-  tableBody[0].innerHTML = newDomList.join(" ");
+  tableBody[0].innerHTML =  .join(" ");
 }
 
 //----form validation--------
