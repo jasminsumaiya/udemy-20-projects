@@ -4,48 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="app.js"></script>
     <title>Resize Operation</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        Body {
-            font-family: "Questrial", sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
         #container {
-            width: 800px;
-            height: 800px;
-            background-color: #f1f1f1;
-            border: 1px solid #d3d3d3;
-            text-align: center;
-            box-shadow: 0 4px 8px 0 rgba(3, 3, 3, 0.2);
+            width: 400px;
+            height: 400px;
+            background-color: beige;
         }
 
-        #drag-item {
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            left: 380px;
-            top: 120px;
-            color: #f1f1f1;
-            overflow: auto;
-            background-color: #4b4747;
-            border: 1px solid #6b6969;
-            box-shadow: 0 4px 8px 0 rgba(5, 4, 4, 0.918);
-            padding: 20px;
-        }
-    </style>
+        #scrool-div{
+            width: 398px;
+            height: 398px;
+            background-color: rgb(212, 212, 206);
+        }        
+    </style>  
 </head>
+
 <body>
     <div id="container">
-        <div id="drag-item">Click here to move</div> 
+        <div id="scrool-div"></div>       
     </div> 
 </body>
 </html>

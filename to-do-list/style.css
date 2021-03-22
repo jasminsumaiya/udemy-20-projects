@@ -1,0 +1,60 @@
+.header {
+  background-color: red;
+  margin-bottom: 20px;
+}
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addTask {
+  width: 500px;
+  height: 40px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.addTask:focus {
+  border-color: black;
+}
+.btn {
+  margin-bottom: 20px;
+  width: 100px;
+}
+
+.list-item {
+  background-color: lightgray;
+}
+.item {
+  display: inline-block;
+  width: 80%;
+}
+.item,
+.edit,
+.delete {
+  cursor: pointer;
+}
+.checkBtn {
+  opacity: 0;
+}
+.checkBtn.show-check {
+  opacity: 1;
+}
+
+.item.strike-task {
+  text-decoration: line-through;
+}
+
+.edit.remove-btn {
+  opacity: 0;
+}
+
+.list-item.style-list {
+  background-color: rgb(155, 152, 152);
+}
